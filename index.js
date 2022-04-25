@@ -87,24 +87,37 @@ const mathListener=()=> {
     activityFolder2.innerText="7"
     activityFolder3.innerText="4"
   
+    const numberFolderArray=Array.from(folderContainer.querySelectorAll('.folder'))
+    console.log(numberFolderArray)
+
     const dotsDiv=document.createElement('div')
     dotsDiv.id="dots-div"
 
-    folderContainer.ondragover=function(e) {
-        e.preventDefault();
-    }
-
-    folderContainer.ondrop=function(e) {
-        e.preventDefault();    
-        dotsDiv.style.borderColor="red"
-
-    }
+    numberFolderArray.map(function(folder){
+      
+        folder.ondragover=function(e) {
+            e.preventDefault();
+        }
     
+        folder.ondrop=function(e) {
+            e.preventDefault();    
+            dotsDiv.style.borderColor="red" 
+            console.log(e)
+        }
+
+    
+    })
+
+//USE DATATRANSFER.SET DATA AND GET DATA TO STORE AND RETRIEVE VALUE OF ID; THEN USE FOR CONDITIONAL
+
     const threeDots = document.createElement('img')
     threeDots.id="three-dots"
+    threeDots.className="3"
     const fourDots = document.createElement('img')
     fourDots.id="four-dots"
+    fourDots.className="4"
     const sevenDots = document.createElement('img')
+    sevenDots.className="7"
     sevenDots.id="seven-dots"
 
     threeDots.src="./assets/threedots.jpg"
@@ -120,9 +133,10 @@ const mathListener=()=> {
 
     const imageCollection=Array.from(document.querySelectorAll('#dots-div img'))
 
-
     imageCollection.map(function(image){
         image.draggable=true;
+
+        // dragevent.dataTransfer.setData("text", dragevent.target.id);
     })
 }
 
