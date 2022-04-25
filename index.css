@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Corinthia:wght@700&family=Londrina+Outline&family=Oswald:wght@200;300;400&family=Red+Hat+Mono:ital,wght@0,500;1,500;1,700&family=Rubik+Bubbles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Corinthia:wght@700&family=Londrina+Outline&family=Oswald:wght@200;300;400&family=Red+Hat+Mono:ital,wght@0,500;1,500;1,700&display=swap');
+
+body {
+    margin-top: 45vh;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 3;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./assets/cave_background/outside_cave.jpg');
+    background-size: auto;
+    background-position: 50% 50%;
+}
+
+div#header {
+    display: flex;
+    justify-content: center;
+    font-family: 'Rubik Bubbles', sans-serif;
+
+}
+
+div#header h1 {
+    /* background-color: rgb(0, 0, 0); */
+    /* box-shadow: 4px 5px 2px black; */
+    color: rgba(0, 217, 255, 0.975);
+    font-size: 2.7em;
+    text-shadow: 2px 4px white;
+}
+
+div#intro-para {
+    display: flex;
+    justify-content: center;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+#button-div {
+margin-top: 5vh;
+display: flex;
+justify-content: center;
+}
+
+#enter-button {
+
+    font-family: 'Rubik Bubbles', sans-serif;
+    color: rgba(0, 217, 255, 0.975);
+    font-size: 2em;
+    border-radius: 50%;
+    background-color:rgba(0, 169, 172, 0.975);
+}
+
+#folder-container {
+    position: absolute;
+    display: none;
+    border: 1px solid black;
+    height: 75%;
+    width:75%;
+    background: rgb(47,112,254);
+    background: linear-gradient(0deg, rgba(47,112,254,1) 15%, rgba(255,103,1,0.1922969871542367) 100%); 
+}
+
+.folder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 33%;
+    height: 33%;
+    margin: 1vh;
+    font-family:'Courier New', Courier, monospace;
+}
+
+#dots-div {
+    display: flex;
+    position: absolute;
+    top: 75vh;
+    border: 3px solid black;
+    
+}
+#solid-shapes-div {
+    display: flex;
+    position: absolute;
+    top: 75vh;
+    border: 3px solid black;
+}
+
+#lower-case-div {
+    display: flex;
+    position: absolute;
+    top: 75vh;
+    border: 3px solid black;
+}
+
+#home-button {
+    position: absolute;
+    top: 10vh;
+    left: 5vh;
+}
+
