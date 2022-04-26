@@ -101,12 +101,41 @@ const mathListener=()=> {
     
         folder.ondrop=function(e) {
             e.preventDefault();    
-            dotsDiv.style.borderColor="red" 
-            console.log(e)
+            // dotsDiv.style.borderColor="red" 
+            console.log(e.target.innerText)
+            var num = e.dataTransfer.getData('text')
+            if (num == e.target.innerText) {
+               folder.style.border="green 5px solid";
+               setTimeout(function(){folder.remove()}, 1000)
+               folderCheck();
+            } else {
+                folder.style.border="red 5px solid"
+                const tryAgain=document.createElement('h1')
+                tryAgain.innerText="try again!"
+                folder.appendChild(tryAgain)
+                setTimeout(function(){
+                    tryAgain.remove()
+                    folder.style.border="black 1px solid"
+                }, 1500)
+                
+            }
+          
         }
 
-    
     })
+
+    const folderCheck = () => {
+        const numFolders=document.querySelectorAll('div#folder-container .folder')
+        console.log(numFolders)
+        if (numFolders.length == 1) {
+            const h1 = document.querySelector('h1')
+            h1.remove();
+            const goodJob = document.createElement('h1')
+            goodJob.innerText = "Good Job! Click the 'home' button to play another game."
+            setTimeout(function(){folderContainer.appendChild(goodJob)}, 1000)
+        }
+    }
+
 
 //USE DATATRANSFER.SET DATA AND GET DATA TO STORE AND RETRIEVE VALUE OF ID; THEN USE FOR CONDITIONAL
 
@@ -135,6 +164,10 @@ const mathListener=()=> {
 
     imageCollection.map(function(image){
         image.draggable=true;
+        image.ondragstart=function(e){
+            e.dataTransfer.setData('text', e.target.className)
+            // console.log(e.target.className)
+        }
 
         // dragevent.dataTransfer.setData("text", dragevent.target.id);
     })
@@ -146,35 +179,104 @@ const artListener=()=> {
     const activityFolder3=document.getElementById('folder-3')
     
     const dottedCircle = document.createElement('img')
+    dottedCircle.className="circle"
     const dottedTriangle = document.createElement('img')
+    dottedTriangle.className="triangle"
     const dottedSquare = document.createElement('img')
+    dottedSquare.className="square"
     
     dottedCircle.src="./assets/dottedCircle.png"
     dottedTriangle.src="./assets/dottedTriangle.png"
     dottedSquare.src="./assets/dottedSquare.png"
 
-    activityFolder1.appendChild(dottedCircle);
+    const numberFolderArray=Array.from(folderContainer.querySelectorAll('.folder'))
+    console.log(numberFolderArray)
+
     activityFolder2.appendChild(dottedTriangle);
     activityFolder3.appendChild(dottedSquare);
+    activityFolder1.appendChild(dottedCircle);
+   
 
     const solidCircle = document.createElement('img')
+    solidCircle.className="circle"
     const solidTriangle = document.createElement('img')
+    solidTriangle.className="triangle"
     const solidSquare = document.createElement('img')
+    solidSquare.className="square"
    
     const solidShapesDiv=document.createElement('div')
     solidShapesDiv.id="solid-shapes-div"
+
+    numberFolderArray.map(function(folder){
+      
+        folder.ondragover=function(e) {
+            e.preventDefault();
+        }
+    
+        folder.ondrop=function(e) {
+            e.preventDefault();    
+            // dotsDiv.style.borderColor="red" 
+            console.log(e.target.innerText)
+            var shape = e.dataTransfer.getData('text')
+            if (shape == e.target.className) {
+               folder.style.border="green 5px solid";
+               setTimeout(function(){folder.remove()}, 1000)
+               folderCheck();
+            } else {
+                folder.style.border="red 5px solid"
+                const tryAgain=document.createElement('h1')
+                tryAgain.innerText="try again!"
+                folder.appendChild(tryAgain)
+                setTimeout(function(){
+                    tryAgain.remove()
+                    folder.style.border="black 1px solid"
+                }, 1500)
+                
+            }
+          
+        }
+
+    })
+
+    const folderCheck = () => {
+        const numFolders=document.querySelectorAll('div#folder-container .folder')
+        console.log(numFolders)
+        if (numFolders.length == 1) {
+            const h1 = document.querySelector('h1')
+            h1.remove();
+            const goodJob = document.createElement('h1')
+            goodJob.innerText = "Good Job! Click the 'home' button to play another game."
+            setTimeout(function(){folderContainer.appendChild(goodJob)}, 1000)
+        }
+    }
+
     
     solidCircle.src="./assets/solidCircle.png"
     solidTriangle.src="./assets/solidTriangle.png"
     solidSquare.src="./assets/solidSquare.png"
     
     solidShapesDiv.appendChild(solidCircle)
-    solidShapesDiv.appendChild(solidTriangle)
     solidShapesDiv.appendChild(solidSquare)
+    solidShapesDiv.appendChild(solidTriangle)
    
     const body = document.querySelector('body')
     console.log(body)
     document.body.appendChild(solidShapesDiv)
+
+
+    const imageCollection=Array.from(document.querySelectorAll('#solid-shapes-div img'))
+
+    console.log(imageCollection)
+    imageCollection.map(function(image){
+        image.draggable=true;
+        image.ondragstart=function(e){
+            e.dataTransfer.setData('text', e.target.className)
+            console.log(e.target.className)
+        }
+
+        // dragevent.dataTransfer.setData("text", dragevent.target.id);
+    })
+
 }
 
 const readingListener=()=> {
@@ -213,6 +315,7 @@ const readingListener=()=> {
     const body = document.querySelector('body')
     console.log(body)
     document.body.appendChild(lowerCaseDiv)
+    
 }
 
 function allowDrop(ev) {

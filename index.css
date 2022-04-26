@@ -96,5 +96,7 @@ justify-content: center;
     position: absolute;
     top: 10vh;
     left: 5vh;
+    font-size: 1em;
+    background-color: aqua;
 }
 
