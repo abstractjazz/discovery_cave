@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Corinthia:wght@700&family=Londrina+Outline&family=Oswald:wght@200;300;400&family=Red+Hat+Mono:ital,wght@0,500;1,500;1,700&family=Rubik+Bubbles&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Corinthia:wght@700&family=Londrina+Outline&family=Oswald:wght@200;300;400&family=Red+Hat+Mono:ital,wght@0,500;1,500;1,700&display=swap');
 
+
+
 body {
     margin-top: 45vh;
     display: flex;
@@ -69,6 +71,8 @@ justify-content: center;
     height: 33%;
     margin: 1vh;
     font-family:'Courier New', Courier, monospace;
+    font-size: 1.5em;
+    font-weight: 700;
 }
 
 #dots-div {
@@ -99,4 +103,42 @@ justify-content: center;
     font-size: 1em;
     background-color: aqua;
 }
+#sound-on {
+    position: absolute;
+    top: 20vh;
+    left: 5vh;
+    font-size: 1em;
+    background-color: rgb(77, 255, 0);
+}
 
+#sound-off {
+    position: absolute;
+    top: 25vh;
+    left: 5vh;
+    font-size: 1em;
+    background-color: rgb(255, 89, 0);
+}
+
+#mute {
+    position: absolute;
+    top: 25vh;
+    left: 5vh;
+    font-size: 1em;
+    background-color: rgb(255, 89, 0); 
+}
+
+#kid {
+    position: absolute;
+    left: 3vh;
+    top: 65vh;
+    width: 5vw;
+    height: auto;
+}
+
+#explore {
+    position: absolute;
+    left: 9vh;
+    top: 65vh;
+    width: 5vw;
+    height: auto;
+}

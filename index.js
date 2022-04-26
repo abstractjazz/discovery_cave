@@ -1,3 +1,4 @@
+
 console.log('I am in index.js')
 
 const enterButton = document.getElementById('enter-button');
@@ -6,6 +7,22 @@ const folderContainer=document.getElementById('folder-container');
 const subjectFolders=document.querySelectorAll('div#folder-container .folder')
 const folderArray=Array.from(subjectFolders)
 const homeButton=document.getElementById('home-button')
+
+const backgroundMusic = new Pizzicato.Sound({
+    source: 'file',
+    options: {path:'./assets/background-music.mp3', loop: true }
+    }, function() {
+    backgroundMusic.play();
+});
+
+const ding = new Pizzicato.Sound('./assets/ding.mp3')
+const buzz = new Pizzicato.Sound('./assets/buzz.mp3')
+
+const soundOn=document.getElementById('sound-on')
+const soundOff=document.getElementById('sound-off')
+soundOn.addEventListener('click', function(){backgroundMusic.play()})
+soundOff.addEventListener('click',function(){backgroundMusic.stop()})
+
 
 const reload= ()=>{
 location.reload();
@@ -106,10 +123,12 @@ const mathListener=()=> {
             var num = e.dataTransfer.getData('text')
             if (num == e.target.innerText) {
                folder.style.border="green 5px solid";
+               ding.play()
                setTimeout(function(){folder.remove()}, 1000)
                folderCheck();
             } else {
                 folder.style.border="red 5px solid"
+                buzz.play()
                 const tryAgain=document.createElement('h1')
                 tryAgain.innerText="try again!"
                 folder.appendChild(tryAgain)
@@ -220,10 +239,12 @@ const artListener=()=> {
             var shape = e.dataTransfer.getData('text')
             if (shape == e.target.className) {
                folder.style.border="green 5px solid";
+               ding.play();
                setTimeout(function(){folder.remove()}, 1000)
                folderCheck();
             } else {
                 folder.style.border="red 5px solid"
+                buzz.play();
                 const tryAgain=document.createElement('h1')
                 tryAgain.innerText="try again!"
                 folder.appendChild(tryAgain)
@@ -329,11 +350,13 @@ const readingListener=()=> {
             var shape = e.dataTransfer.getData('text')
             if (shape == e.target.className) {
                folder.style.border="green 5px solid";
+               ding.play();
                setTimeout(function(){folder.remove()}, 1000)
                folderCheck();
             } else {
                 folder.style.border="red 5px solid"
                 const tryAgain=document.createElement('h1')
+                buzz.play();
                 tryAgain.innerText="try again!"
                 folder.appendChild(tryAgain)
                 setTimeout(function(){
