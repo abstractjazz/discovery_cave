@@ -32,13 +32,18 @@ div#header h1 {
 
 div#intro-para {
     display: flex;
+    background-color: rgba(0, 0, 0, 0.155);
     justify-content: center;
     margin-left: 25%;
     margin-right: 25%;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    font-size: 1.25em;
+    color: white;
 }
 
 #button-div {
-margin-top: 5vh;
+margin-top: 2.5vh;
 display: flex;
 justify-content: center;
 }
