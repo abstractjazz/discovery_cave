@@ -285,25 +285,81 @@ const readingListener=()=> {
     const activityFolder3=document.getElementById('folder-3')
     
     const upperCaseA = document.createElement('img')
+    upperCaseA.className="a"
     const upperCaseQ = document.createElement('img')
+    upperCaseQ.className="q"
     const upperCaseR = document.createElement('img')
+    upperCaseR.className="r"
     
     upperCaseA.src="./assets/upperCaseA.png"
     upperCaseQ.src="./assets/upperCaseQ.png"
-    upperCaseQ.style.height = '100%'
     upperCaseR.src="./assets/upperCaseR.png"
+
+    const numberFolderArray=Array.from(folderContainer.querySelectorAll('.folder'))
+    console.log(numberFolderArray)
+
+    upperCaseA.style.height = '100%'
+    upperCaseQ.style.height = '100%'
+    upperCaseR.style.height = '100%'
 
     activityFolder1.appendChild(upperCaseA);
     activityFolder2.appendChild(upperCaseQ);
     activityFolder3.appendChild(upperCaseR);
 
     const lowerCaseA = document.createElement('img')
+    lowerCaseA.className="a"
     const lowerCaseQ = document.createElement('img')
+    lowerCaseQ.className="q"
     const lowerCaseR = document.createElement('img')
+    lowerCaseR.className="r"
    
     const lowerCaseDiv=document.createElement('div')
     lowerCaseDiv.id="lower-case-div"
+
+    numberFolderArray.map(function(folder){
+      
+        folder.ondragover=function(e) {
+            e.preventDefault();
+        }
     
+        folder.ondrop=function(e) {
+            e.preventDefault();    
+            // dotsDiv.style.borderColor="red" 
+            console.log(e.target.innerText)
+            var shape = e.dataTransfer.getData('text')
+            if (shape == e.target.className) {
+               folder.style.border="green 5px solid";
+               setTimeout(function(){folder.remove()}, 1000)
+               folderCheck();
+            } else {
+                folder.style.border="red 5px solid"
+                const tryAgain=document.createElement('h1')
+                tryAgain.innerText="try again!"
+                folder.appendChild(tryAgain)
+                setTimeout(function(){
+                    tryAgain.remove()
+                    folder.style.border="black 1px solid"
+                }, 1500)
+                
+            }
+          
+        }
+
+    })
+
+    const folderCheck = () => {
+        const numFolders=document.querySelectorAll('div#folder-container .folder')
+        console.log(numFolders)
+        if (numFolders.length == 1) {
+            const h1 = document.querySelector('h1')
+            h1.remove();
+            const goodJob = document.createElement('h1')
+            goodJob.innerText = "Good Job! Click the 'home' button to play another game."
+            setTimeout(function(){folderContainer.appendChild(goodJob)}, 1000)
+        }
+    }
+
+
     lowerCaseA.src="./assets/lowerCaseA.png"
     lowerCaseQ.src="./assets/lowerCaseQ.png"
     lowerCaseR.src="./assets/lowerCaseR.png"
@@ -315,7 +371,20 @@ const readingListener=()=> {
     const body = document.querySelector('body')
     console.log(body)
     document.body.appendChild(lowerCaseDiv)
-    
+
+    const imageCollection=Array.from(document.querySelectorAll('#lower-case-div img'))
+
+    console.log(imageCollection)
+    imageCollection.map(function(image){
+        image.draggable=true;
+        image.ondragstart=function(e){
+            e.dataTransfer.setData('text', e.target.className)
+            console.log(e.target.className)
+        }
+
+        // dragevent.dataTransfer.setData("text", dragevent.target.id);
+    })
+
 }
 
 function allowDrop(ev) {
